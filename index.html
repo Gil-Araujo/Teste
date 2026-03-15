@@ -6,6 +6,9 @@
     <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
     <!-- enviroment A-Frame https://aframe.io/docs/1.7.0/guides/building-a-basic-scene.html#creating-a-custom-environment-optional) -->
     <script src="https://unpkg.com/aframe-environment-component@1.5.x/dist/aframe-environment-component.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.6.0/dist/aframe-extras.min.js"></script>
+        
   </head>
 
   <body>
@@ -55,19 +58,18 @@
     ></a-entity>
 
     <!-- o VR adiciona a altura do jogador por isso temnos de colocar o y do rig(RV) e a camara - PC - comom parent com o y a 1.6-->   
-  <a-entity id="rig" position="0 0 0">
-  <a-entity id="camera" camera look-controls wasd-controls position="0 1.6 0">
-    <a-entity meta-touch-controls="hand: left"></a-entity>
+<a-entity id="rig" movement-controls="fly: false" position="0 0 0">
+  <a-entity id="camera" camera look-controls position="0 1.6 0">
+    <a-entity cursor="fuse: true; fuseTimeout: 1500"
+              raycaster="objects: .clickable"
+              position="0 0 -1"
+              geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+              material="color: black; shader: flat">
+    </a-entity>
+  </a-entity>
+  <!-- controllers are children of rig, NOT camera -->
+  <a-entity meta-touch-controls="hand: left"></a-entity>
   <a-entity meta-touch-controls="hand: right"></a-entity>
-        <a-entity cursor="fuse: true; fuseTimeout: 1500"
-                  raycaster="objects: .clickable"
-                  position="0 0 -1"
-                  geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-                  material="color: black; shader: flat">
-        </a-entity>
-
-
-</a-entity>
 </a-entity>
 
 
